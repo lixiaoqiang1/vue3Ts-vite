@@ -1,0 +1,6 @@
+.content{
+    background: white;
+    padding: 15px;
+    height: calc(100%);
+    box-sizing: border-box;
+}
