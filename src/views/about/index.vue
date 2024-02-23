@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="content">
     <el-table :data="tableData" style="width: 100% !">
       <el-table-column prop="name" label="姓名" width="150" />
       <el-table-column prop="age" label="年龄" width="150" />
