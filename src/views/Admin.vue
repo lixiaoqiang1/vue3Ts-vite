@@ -15,7 +15,7 @@
         </el-header>
         <el-container>
           <el-aside width="240px" class="aside">
-            <el-menu
+            <!-- <el-menu
               default-active="2"
               class="el-menu-vertical-demo"
               :collapse="isCollapse"
@@ -41,26 +41,11 @@
                 <el-icon><document /></el-icon>
                 <template #title>大语言模型</template>
               </el-menu-item>
+            </el-menu> -->
+            <el-menu :collapse="isCollapse" unique-opened router>
+              <MenuList :list="menus" />
             </el-menu>
           </el-aside>
-          <!-- <el-aside width="210px" class="aside-wrapper">
-            <el-scrollbar>
-              <el-menu :default-active="defaultActive" mode="vertical" :collapse-transition="false" router class="menu-wrapper">
-                <el-sub-menu v-for="menu in menus" :key="menu.path" :index="menu.path">
-                  <template #title>
-                    <el-icon><component :is="menu.meta.icon" /></el-icon>
-                    <span>{{ menu.name }}</span>
-                  </template>
-                  <el-menu-item v-if="menu.children.length>0" v-for="child in menu.children" :key="child.path" :index="child.path">
-                    <template #title>
-                      <el-icon><component :is="child.meta.icon" /></el-icon>
-                      <span>{{ child.name }}</span>
-                    </template>
-                  </el-menu-item>
-                </el-sub-menu>
-              </el-menu>
-            </el-scrollbar>
-          </el-aside> -->
           <el-main class="main">
             <router-view></router-view>
           </el-main>
@@ -79,28 +64,62 @@ const router = useRouter();
 onMounted(() => {
   console.log("onMounted--");
 });
-const defaultActive = ref(0)
-// const loge =  = ref(loge)
+
+
 const menus = [
-{
-    
-    name:'菜单1',
-    path:'/ceshi',
-    meta:{icon:''},
-    children:[
-      {
-        name:'菜单1',
-        path:'/ceshi',
-        meta:{icon:''},
-      }
-    ],
-  },
-  {
-    name:'菜单2',
-    path:'/about',
-    meta:{icon:''},
-  },
+	{
+		path: '/home',
+		name: 'home',
+		meta: {
+			title: '首页',
+			icon: 'HomeFilled'
+		},
+		children:[]
+	},
+	{
+		path: '/shezhi',
+		name: 'shezhi',
+		meta: {
+			title: '设置',
+			icon: 'UserFilled'
+		},
+    children:[]
+	},
+	{
+		path: '/user',
+		name: 'user',
+		meta: {
+			title: '个人中心',
+			icon: 'UserFilled'
+		},
+    children: [{
+				path: '/user',
+				name: 'User',
+				meta: {
+					title: '用户',
+					icon: ''
+				}
+			},
+			{
+				path: '/about',
+				name: 'User',
+				meta: {
+					title: '关于',
+					icon: ''
+				},
+				children: [{
+					path: '/about',
+					name: 'Roles',
+					meta: {
+						title: '角色管理',
+						icon: ''
+					},
+				}, ]
+			}
+		]
+	},
 ]
+
 const isCollapse = ref(false);
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log('handleOpen',key, keyPath);

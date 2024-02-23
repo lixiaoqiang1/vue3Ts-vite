@@ -7,15 +7,6 @@ const routes = [
     component: () => import('../views/adminHome.vue'),
     children: [
         {
-            path: "/ceshi",
-            name: "ceshi",
-            component: () => import('../views/ceshi/index.vue'),
-            meta: {
-                icon: "el-icon-menu",
-                title: "ceshi"
-            }
-        },
-        {
           path: "/about",
           name: "about",
           component: () => import('../views/about/index.vue'),

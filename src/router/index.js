@@ -3,27 +3,45 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
   {
     path: "/",
-    name: "Homepage",
-    component: () => import('../views/Homepage.vue'),
+    name: "Admin",
+    component: () => import('../views/Admin.vue'),
     children: [
-        {
-            path: "/ceshi",
-            name: "ceshi",
-            component: () => import('../views/ceshi/index.vue'),
-            meta: {
-                icon: "el-icon-menu",
-                title: "ceshi"
-            }
-        },
-        {
-          path: "/about",
-          name: "about",
-          component: () => import('../views/about/index.vue'),
-          meta: {
+      {
+        path: "/home",
+        name: "home",
+        component: () => import('../views/home/index.vue'),
+        meta: {
             icon: "el-icon-menu",
-            title: "about"
+            title: "首页"
         }
-        },
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: () => import('../views/about/index.vue'),
+      meta: {
+        icon: "el-icon-menu",
+        title: "about"
+      }
+    },
+    {
+      path: "/shezhi",
+      name: "shezhi",
+      component: () => import('../views/shezhi/index.vue'),
+      meta: {
+        icon: "el-icon-menu",
+        title: "about"
+      }
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: () => import('../views/user/index.vue'),
+      meta: {
+        icon: "el-icon-menu",
+        title: "user"
+      }
+    },
     ]
   },
   {
