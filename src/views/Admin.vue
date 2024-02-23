@@ -15,35 +15,8 @@
         </el-header>
         <el-container>
           <el-aside width="240px" class="aside">
-            <!-- <el-menu
-              default-active="2"
-              class="el-menu-vertical-demo"
-              :collapse="isCollapse"
-              @open="handleOpen"
-              @select="handleSelect"
-              @close="handleClose"
-            >
-              <el-sub-menu index="1">
-                <template #title>
-                  <el-icon><location /></el-icon>
-                  <span>模型训练</span>
-                </template>
-                <el-menu-item-group>
-                  <el-menu-item index="/ceshi">训练1-1</el-menu-item>
-                  <el-menu-item index="/about">训练1-2</el-menu-item>
-                </el-menu-item-group>
-              </el-sub-menu>
-              <el-menu-item index="/ceshi">
-                <el-icon><icon-menu /></el-icon>
-                <template #title>数据集管理</template>
-              </el-menu-item>
-              <el-menu-item index="/about">
-                <el-icon><document /></el-icon>
-                <template #title>大语言模型</template>
-              </el-menu-item>
-            </el-menu> -->
             <el-menu :collapse="isCollapse" unique-opened router>
-              <MenuList :list="menus" />
+              <MenuList :list="store.getters.menuData" />
             </el-menu>
           </el-aside>
           <el-main class="main">
@@ -56,83 +29,20 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-// import { loge } from "~/assets/images/logo1.png"
+import {useStore} from 'vuex'
+const store = useStore()    //获取store对象
 const router = useRouter();
-// const route = useRoute();
-onMounted(() => {
-  console.log("onMounted--");
-});
-
-
-const menus = [
-	{
-		path: '/home',
-		name: 'home',
-		meta: {
-			title: '首页',
-			icon: 'HomeFilled'
-		},
-		children:[]
-	},
-	{
-		path: '/shezhi',
-		name: 'shezhi',
-		meta: {
-			title: '设置',
-			icon: 'UserFilled'
-		},
-    children:[]
-	},
-	{
-		path: '/user',
-		name: 'user',
-		meta: {
-			title: '个人中心',
-			icon: 'UserFilled'
-		},
-    children: [{
-				path: '/user',
-				name: 'User',
-				meta: {
-					title: '用户',
-					icon: ''
-				}
-			},
-			{
-				path: '/about',
-				name: 'User',
-				meta: {
-					title: '关于',
-					icon: ''
-				},
-				children: [{
-					path: '/about',
-					name: 'Roles',
-					meta: {
-						title: '角色管理',
-						icon: ''
-					},
-				}, ]
-			}
-		]
-	},
-]
 
 const isCollapse = ref(false);
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log('handleOpen',key, keyPath);
-};
-const handleSelect = (key: string, keyPath: string[]) => {
-  console.log("handleSelect", key);
-  router.push({ path: key });
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log('handleClose',key, keyPath);
-};
+
+onMounted(() => {
+  console.log("onMounted--");
+  store.dispatch('setMenusData', '')
+});
 const edit = () => {
-  router.push({ path: "/ceshi" });
+  router.push({ path: "/about" });
 };
 const layout = () => {
   console.log("layout");
