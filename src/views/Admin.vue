@@ -40,6 +40,7 @@ const isCollapse = ref(false);
 onMounted(() => {
   console.log("onMounted--");
   store.dispatch('setMenusData', '')
+  setData()
 });
 const edit = () => {
   router.push({ path: "/about" });
@@ -48,6 +49,9 @@ const layout = () => {
   console.log("layout");
   router.push({ path: "/login" });
 };
+function setData (){
+  console.log('setData')
+}
 </script>
 
 <style scoped lang="scss">
