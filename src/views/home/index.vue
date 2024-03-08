@@ -1,5 +1,8 @@
 <template>
-  <div class="content">home
+  <div class="content">
+    <h1>home</h1>
+    {{ chartData }}
+    <!-- <ve-line :data="chartData"></ve-line> -->
     <h1>名字：{{person.name}}--年龄：{{person.age}}</h1>
     {{ data }}
     
@@ -7,8 +10,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-import {ref,onMounted} from "vue"
+import {ref,reactive, onMounted} from "vue"
 import {useStore} from 'vuex'
+const chartData = ref({
+  columns: ['日期', '销售额'],
+  rows: [
+    { '日期': '1月1日', '销售额': 123 },
+    { '日期': '1月2日', '销售额': 1223 },
+    { '日期': '1月3日', '销售额': 2123 },
+    { '日期': '1月4日', '销售额': 4123 },
+    { '日期': '1月5日', '销售额': 3123 },
+    { '日期': '1月6日', '销售额': 7123 }
+  ]
+})
 const data = ref(0)
 const store = useStore()    //获取store对象
 let person = store.getters.getPerson 
