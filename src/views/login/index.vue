@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { getCurriculumsList } from '@/api/home.ts'
+import { getCurriculumsList } from '@/api/login.ts'
 export default {
   data(){
      return {
