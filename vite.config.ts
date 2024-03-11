@@ -13,19 +13,25 @@ export default defineConfig({
     host:"0.0.0.0",
     open:false,
     port:4000,
-    https:false,
-    hotOnly:false,
+    // https:false,
+    // hotOnly:false,
     proxy: {
-      '/suoker': {
-        target: 'http://www.sr.com',
-        rewrite: (path) => path.replace(/^\/sr/, ''),
+      '/api': {
+        target: 'https://phpapi.q06.cn',
         changeOrigin: true,             //是否跨域
+        rewrite:path=>path.replace(/^\/api/,'') // 设置重写的路径
+        
       },
-      '/asp': {
-        target: 'http://localhost:1100/api/',
-        rewrite: (path) => path.replace(/^\/asp/, ''),
-        changeOrigin: true,             //是否跨域
-      },
+      // '/suoker': {
+      //   target: 'http://www.sr.com',
+      //   rewrite: (path) => path.replace(/^\/sr/, ''),
+      //   changeOrigin: true,             //是否跨域
+      // },
+      // '/asp': {
+      //   target: 'http://localhost:1100/api/',
+      //   rewrite: (path) => path.replace(/^\/asp/, ''),
+      //   changeOrigin: true,             //是否跨域
+      // },
  
     }
   },

@@ -26,13 +26,15 @@
              class="rememberme"
          >记住密码</el-checkbox>
          <el-form-item style="width:100%;">
-             <el-button type="primary" style="width:100%;" @click="handleSubmit" :loading="logining">登录</el-button>
+            <el-button type="primary" style="width:100%;" @click="ceshi" :loading="logining">测试</el-button>
+            <el-button type="primary" style="width:100%;" @click="handleSubmit" :loading="logining">登录</el-button>
          </el-form-item>
      </el-form>
  </div>
 </template>
 
 <script>
+import { getCurriculumsList } from '@/api/home.ts'
 export default {
   data(){
      return {
@@ -49,6 +51,16 @@ export default {
      }
  },
  methods: {
+    ceshi(){
+        const json = {
+            model:'report765',
+            token:'1',
+            service:'rpc.search_read',
+        }
+        getCurriculumsList(json).then(res=>{
+            console.log(res)
+        })
+    },
      handleSubmit(event){
          this.$refs.ruleForm2.validate((valid) => {
              if(valid){

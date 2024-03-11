@@ -2,6 +2,7 @@ import {createStore} from 'vuex'//导入createStore构造函数
 export default createStore({ 
     state:{ //Vuex的状态，实际上就是存数据的地方
       menuData:[],
+      token: '123456',// getToken()
       person:{
           name:'jack',
           age:5000

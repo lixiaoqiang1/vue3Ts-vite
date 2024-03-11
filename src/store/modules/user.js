@@ -9,7 +9,7 @@
 //   } from '@/utils/auth'
   // import { resetRouter } from '@/router'
   const state = {
-    token: '',// getToken()
+    token: '123456',// getToken()
     roles: '',//getRole()
     user: [],
     name: '',
