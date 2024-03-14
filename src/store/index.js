@@ -36,7 +36,7 @@ export default createStore({
             name: 'home',
             meta: {
               title: '首页',
-              icon: 'HomeFilled'
+              icon: 'UserFilled'
             },
             children:[]
           },
@@ -61,7 +61,7 @@ export default createStore({
                 name: 'User',
                 meta: {
                   title: '用户',
-                  icon: ''
+                  icon: 'HelpFilled'
                 }
               },
               {
@@ -69,7 +69,7 @@ export default createStore({
                 name: 'User',
                 meta: {
                   title: '关于',
-                  icon: ''
+                  icon: 'HelpFilled'
                 },
                 children: [{
                   path: '/about',
