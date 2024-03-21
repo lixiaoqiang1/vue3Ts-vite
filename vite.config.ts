@@ -1,14 +1,37 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
- 
+import { fileURLToPath, URL } from 'node:url'
+ // 引入@vitejs/plugin-legacy
+import legacy from '@vitejs/plugin-legacy';
+
 export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
+  plugins: [
+    legacy({
+      targets: ['defaults', 'not IE 11']
+    }),
+    vue()],
+  // resolve: {
+  //   alias: {
+  //     '@': path.resolve(__dirname, 'src')
+  //   }
+  // },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // 引入 mixin.scss 这样就可以在全局中使用 mixin.scss中预定义的变量了
+        // 给导入的路径最后加上 ; 
+        additionalData: '@import "@/assets/styles/mixin.scss";'
+      }
     }
   },
+  base: './',
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+
   server: {
     host:"0.0.0.0",
     open:false,

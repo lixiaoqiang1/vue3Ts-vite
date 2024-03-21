@@ -5,7 +5,7 @@
       ref="ruleForm2" 
       label-position="left" 
       label-width="0px" 
-      class="demo-ruleForm login-page">
+      class="demo-ruleForm color-green">
          <h3 class="title">系统登录</h3>
          <el-form-item prop="username">
              <el-input type="text" 
@@ -25,7 +25,7 @@
              v-model="checked"
              class="rememberme"
          >记住密码</el-checkbox>
-         <el-form-item style="width:100%;">
+         <el-form-item style="width:100%;" class="group-list">
             <el-button type="primary" style="width:100%;" @click="ceshi" :loading="logining">测试</el-button>
             <el-button type="primary" style="width:100%;" @click="handleSubmit" :loading="logining">登录</el-button>
          </el-form-item>
@@ -86,16 +86,29 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
 .login-container {
  width: 100%;
  height: 100vh;
- background: #4373a5;
+ background: gray;
 
  /* 登录框上下对齐 */
  display: flex;
+ justify-content: center;
  align-items: center;
+ .demo-ruleForm {
+    background: white;
+    padding: 50px 60px;
+    border-radius: 8px;
+    width: 450px;
+    .title{
+        color: #333;text-align: center;font-weight: bold;line-height: 50px;
+    }
+    .el-form-item{
+        margin: 10px 0;
+    }
+ }
 }
 .login-page {
  -webkit-border-radius: 5px;
@@ -107,8 +120,14 @@ export default {
  border: 1px solid #eaeaea;
  box-shadow: 0 0 25px #cac6c6;
 }
-label.el-checkbox.rememberme {
+/* label.el-checkbox.rememberme {
  margin: 0px 0px 15px;
  text-align: left;
+} */
+.group-list{
+    // background-color: #eee;
+    .el-button{
+        margin: 10px 0;
+    }
 }
 </style>
